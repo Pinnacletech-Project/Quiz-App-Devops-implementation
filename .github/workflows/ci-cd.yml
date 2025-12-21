@@ -29,8 +29,9 @@ jobs:
       - name: Snyk Security Scan
         run: |
           npm install -g snyk
-          snyk auth ${{ secrets.SNYK_TOKEN }}
-          snyk test 
+          snyk test
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }} 
 
       - name: Run Backend Tests
         run: npm test
